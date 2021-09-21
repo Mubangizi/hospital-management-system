@@ -24,15 +24,7 @@ const SideBar = () => {
     <div className="SideBar">
       <div className={`SideBarContent Side-${open}`}>
         <div>
-          <div className="UserImage">
-            <IconButton className="UserImageBtn" onClick={sendToHome}>
-              {/* <Avatar src={picture} /> */}
-              <div className="UserImageOverlay">
-                <p className="UserImageText">Mubangizi Allan</p>
-              </div>
-            </IconButton>
-            <div className="UserGitProfile ItemUnderline">Administrator</div>
-          </div>
+          <div className="UserRoleSection">Administrator</div>
           <div className="NavItems">
             <NavLink to={{ pathname: `/` }} exact={true}>
               Dashboard

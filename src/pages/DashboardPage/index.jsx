@@ -24,7 +24,11 @@ const DashboardPage = () => {
             <SmallInfoCard name="Patients" value="333" />
             <SmallInfoCard name="Rec Managers" value="52" />
           </div>
-          <TableCard dataList={departments_summary} headingList={headingList} />
+          <TableCard
+            title="Departments"
+            dataList={departments_summary}
+            headingList={headingList}
+          />
         </div>
       </div>
     </Layout>

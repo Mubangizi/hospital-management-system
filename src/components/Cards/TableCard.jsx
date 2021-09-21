@@ -7,11 +7,17 @@ import {
   TableHead,
   TableRow,
 } from "@material-ui/core";
+import { Link } from "react-router-dom";
 
-const TableCard = ({ dataList = [], headingList = [] }) => {
+const TableCard = ({
+  title = "",
+  dataList = [],
+  headingList = [],
+  link = null,
+}) => {
   return (
     <div className="TableCard Card">
-      <h2 className="TableCardTitle">Departments</h2>
+      <h2 className="TableCardTitle">{title}</h2>
       <TableContainer>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
@@ -30,7 +36,9 @@ const TableCard = ({ dataList = [], headingList = [] }) => {
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
                   {row.map((cell, index) => (
-                    <TableCell key={index}>{cell}</TableCell>
+                    <TableCell key={index}>
+                      {link && <Link to={link}>{cell}</Link>}
+                    </TableCell>
                   ))}
                 </TableRow>
               ))}

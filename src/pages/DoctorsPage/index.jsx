@@ -19,10 +19,13 @@ const DoctorsPage = () => {
           <div className="CardList">
             <SmallInfoCard name="On Duty" value="80" />
             <SmallInfoCard name="On leave" value="20" />
-            <SmallInfoCard name="Patients" value="333" />
-            <SmallInfoCard name="Rec Managers" value="52" />
           </div>
-          <TableCard headingList={headingList} dataList={doctors_summary} />
+          <TableCard
+            title="Doctors List"
+            headingList={headingList}
+            dataList={doctors_summary}
+            link="/profile_info"
+          />
         </div>
       </div>
     </Layout>

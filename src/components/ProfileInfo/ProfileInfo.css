@@ -1,0 +1,33 @@
+.ProfileInfo{
+    display: flex;
+    padding: 1.5rem;
+    gap: 1.5rem;
+    font-size: 1.1rem;
+
+}
+
+.ProfileInfo .MuiAvatar-root{
+    height: 10rem;
+    width: 10rem;
+}
+.ProfileSection{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.ProfileInfo span{
+    font-weight: 600;
+}
+
+.ProfileInfo hr{
+    margin: 0;
+}
+
+.PersonalInfo .Username{
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+.PersonalInfo .Usertitle{
+    font-size: 1.2rem;
+}

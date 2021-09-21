@@ -46,3 +46,8 @@
 .TableCard .MuiTableHead-root .MuiTableRow-root:hover{
     background-color: #fff
 }
+
+.TableCard a{
+    text-decoration: none;
+    color: inherit;
+}

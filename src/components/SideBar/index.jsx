@@ -1,13 +1,13 @@
 import React from "react";
-import { NavLink, useHistory } from "react-router-dom";
-import { Avatar, IconButton } from "@material-ui/core";
+import { NavLink } from "react-router-dom";
+import { IconButton } from "@material-ui/core";
 import MenuOutlinedIcon from "@material-ui/icons/MenuOutlined";
 import "./SideBar.css";
 import CloseOutlinedIcon from "@material-ui/icons/CloseOutlined";
 
 const SideBar = () => {
   const [open, setOpen] = React.useState(false);
-  const history = useHistory();
+  // const history = useHistory();
 
   const handleDrawer = () => {
     if (open === true) {
@@ -17,9 +17,9 @@ const SideBar = () => {
     }
   };
 
-  const sendToHome = () => {
-    history.push("/");
-  };
+  // const sendToHome = () => {
+  //   history.push("/");
+  // };
   return (
     <div className="SideBar">
       <div className={`SideBarContent Side-${open}`}>

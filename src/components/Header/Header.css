@@ -10,3 +10,50 @@
 .Header .HeaderLogo{
     font-size: 2rem;
 }
+
+.SubHeader{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--color-dark-faint);
+    padding: 0.8rem 0;
+    margin-bottom: 2rem;
+}
+.SubHeaderHeading{
+    font-size: 2rem;
+}
+
+.AddBtn.MuiButton-root{
+    background-color: var(--color-green);
+    color: white;
+}
+
+.AddBtn.MuiButton-root:hover {
+    background-color: var(--color-green-dark);
+}
+.SearchBar{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+.SearchBar input{
+    background-color: white;
+    border: none;
+    height: 2.5rem;
+    width: 28rem;
+    border-radius: 0;
+    padding-left: 1rem;
+    font-size: 1rem;
+}
+
+.SearchBar .MuiIconButton-root{
+    background-color: var(--color-background-dark);
+    color: white;
+    border-radius: 0;
+    height: 2.6rem;
+}
+
+.SearchBar .MuiIconButton-root:hover {
+    background-color: var(--color-background);
+}

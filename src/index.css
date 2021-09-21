@@ -5,6 +5,8 @@ html {
   --color-primary: #347FC4;
   --color-blue: #347FC4;
   --color-green: #22A410;
+  --color-green-dark: #1b830d;
+  --color-dark-faint: #7D6B91;
 }
 
 body {
@@ -12,7 +14,12 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #000;
+  background-color: #E5E5E5;
   font-family: Nunito, sans-serif;
+}
+
+button, input{
+  outline: none!important;
 }
 
 p {
@@ -20,7 +27,7 @@ p {
 }
 
 h1 {
-  font-size: 45px;
+  margin: 0
 }
 
 @media (max-width: 370px){

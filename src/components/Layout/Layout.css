@@ -1,0 +1,72 @@
+.Layout {
+  width: 100%;
+  height: 100vh;
+}
+.LiveBackground {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+
+.SideBar {
+  width: 20%;
+}
+main {
+  padding: 40px 0;
+  margin-left: 20%;
+}
+@media (max-width: 1275px) {
+  main {
+    margin-left: 0;
+  }
+  .SideBar {
+    width: 350px;
+  }
+}
+
+.SectionHeader {
+  font-size: 45px;
+  position: relative;
+  margin-bottom: 60px;
+  margin-top: 80px;
+  text-transform: uppercase;
+  cursor: pointer;
+  color: white;
+  font-weight: normal;
+}
+
+.SectionHeader::before {
+  text-transform: uppercase;
+  position: absolute;
+  display: block;
+  content: attr();
+  content: "";
+  font-size: 75px;
+  z-index: -1;
+  opacity: 0.8;
+  font-weight: bold;
+  color: var(--color-background);
+  margin-top: 33px;
+}
+
+.SectionHeader::after {
+  display: block;
+  content: "";
+  height: 5px;
+  border-radius: 10px;
+  background-color: var(--color-blue);
+  width: 100px;
+  margin-top: 10px;
+}
+
+@media(max-width:488px){
+  .SectionHeader::before {
+    font-size: 55px;
+    width: 100%;
+    overflow: hidden !important;
+  }
+
+  .SectionHeader {
+    font-size: 38px;
+  }
+}

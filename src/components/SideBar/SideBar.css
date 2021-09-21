@@ -1,0 +1,203 @@
+.SideBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 5!important;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  gap: 0;
+  color: white;
+}
+
+.SideBarContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: center;
+  background: var(--color-background);
+  border-right: 1px solid var(--color-background-light);
+  height: 100vh;
+}
+
+.SideControllerBtn {
+  visibility: hidden;
+  z-index: 999;
+  margin-top: 10px;
+}
+.SideControllerBtn .MuiIconButton-edgeStart {
+  margin-left: -2px;
+}
+.SideControllerBtn > .MuiButtonBase-root {
+  padding: 10px;
+  background-color: var(--color-background);
+  border-radius: 0;
+  border: 1px solid var(--color-background-light);
+  border-left: none;
+}
+.SideControllerBtn > .MuiButtonBase-root:hover {
+  background-color: var(--color-background);
+}
+
+@media (max-width: 1275px) {
+  .SideBarContent {
+    height: 100vh !important;
+    width: 0;
+    overflow-x: hidden;
+    transition: 0.8s;
+  }
+
+  .SideControllerBtn {
+    visibility: visible;
+  }
+  .Side-false {
+    width: 0 !important;
+    display: none;
+  }
+  .Side-true {
+    width: 100% !important;
+  }
+}
+
+.UserImage {
+  padding: 10px 20px;
+  border-bottom: 1px solid var(--color-background-light) !important;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 10px;
+}
+.UserImage .UserImageBtn {
+  position: relative;
+}
+
+.UserImage .MuiAvatar-root {
+  width: 50%;
+  display: block;
+  height: 190px;
+  width: 190px;
+  border: 7px solid var(--color-background-light);
+}
+.UserImage .MuiAvatar-img{
+  object-fit: contain !important;
+  transform: scale(1.4);
+  
+}
+
+.UserImageBtn .UserImageOverlay {
+  color: white;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--color-background-dark);
+  overflow: hidden;
+  width: 100%;
+  height: 0;
+  border-radius: 50%;
+  transition: 0.5s ease;
+  background-color: rgb(0, 0, 0, 0.4);
+}
+
+.UserImage:hover .UserImageOverlay {
+  height: 100%;
+}
+
+.UserImageOverlay p {
+  text-transform: capitalize;
+  letter-spacing: 1px;
+}
+
+.UserImageText {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.UserGitProfile a {
+  text-decoration: none;
+  color: var(--col);
+  font-size: 15px;
+}
+
+.ItemUnderline {
+  position: relative;
+}
+
+.ItemUnderline::after {
+  position: absolute;
+  content: "";
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 5;
+  background-color: var(--color-primary);
+  overflow: hidden;
+  width: 0;
+  height: 1px;
+  transition: 0.5s ease;
+  margin-top: 8px;
+}
+
+.ItemUnderline:hover::after {
+  width: 100%;
+}
+
+.NavItems {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+}
+.NavItems a {
+  position: relative;
+  text-decoration: none;
+  color: white;
+  padding: 0.6rem 2.2rem;
+  outline: none;
+  font-size: 15px;
+}
+.active {
+  background-color: var(--color-blue);
+  color: white !important;
+}
+
+.NavItems a::before {
+  position: absolute;
+  content: "";
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 5;
+  background-color: rgb(2, 136, 209, 0.2);
+  overflow: hidden;
+  width: 0;
+  height: 100%;
+  transition: 0.5s ease;
+}
+
+.NavItems a:hover::before {
+  width: 100%;
+}
+
+.RemarksSection {
+  border-top: 1px solid var(--color-background-light);
+  bottom: 0 !important;
+}
+.RemarksSection p {
+  text-align: center;
+  cursor: pointer;
+  font-size: 1rem;
+  color: white;
+}
+.RemarksSection p:hover {
+  color: white;
+  transition: 0.2s;
+}

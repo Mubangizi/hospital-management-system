@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;300;400;600;700;800&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;300;400;600;700;800&family=Nunito:wght@200;300;400;600;700;800&display=swap');
 html {
   --color-background: #191d2b;
   --color-background-dark: #272838;
@@ -15,7 +18,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   color: #000;
   background-color: #E5E5E5;
-  font-family: Nunito, sans-serif;
+  font-family: 'Nunito Sans', 'Nunito', sans-serif;
 }
 
 button, input{
@@ -26,9 +29,15 @@ p {
   font-size: 18px;
 }
 
-h1 {
+h1,h2,h3,h4 {
   margin: 0
 }
+
+h2{
+  font-weight: normal!important;
+  font-size: 1.6rem;
+}
+
 
 @media (max-width: 370px){
   h1 {

@@ -1,6 +1,14 @@
 .CardList{
-    display:flex;
+    display: grid;
     gap: 1rem;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+@media (max-width:850px) {
+    .CardList{
+        grid-template-columns: 1fr 1fr;
+    }
+    
 }
 .Card{
     background-color: white;
@@ -9,7 +17,6 @@
 }
 .InfoCard{
     background-color: white;
-    width: 14rem;
     padding: 1.5rem;
     display: flex;
     flex-direction: column;

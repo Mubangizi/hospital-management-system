@@ -1,0 +1,12 @@
+.Header{
+    background-color: var(--color-blue);
+    padding: 0.8rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+
+.Header .HeaderLogo{
+    font-size: 2rem;
+}

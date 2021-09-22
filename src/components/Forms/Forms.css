@@ -1,0 +1,43 @@
+.FormSection{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+    width: 30rem;
+}
+
+.FormSection .FormHeading{
+    width:100%;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.FormSection .MuiOutlinedInput-input{
+    padding: 0.9rem 0.6rem;
+}
+
+.FormRow{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    
+}
+.FormFooter{
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-top: 1rem;
+}
+
+.CancelBtn.MuiButton-root{
+    background-color: #444;
+    color: white;
+    padding: 0.5rem 1rem;
+}
+
+.CancelBtn.MuiButton-root:hover {
+    background-color: #000;
+}

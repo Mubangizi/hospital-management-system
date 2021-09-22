@@ -37,7 +37,7 @@ const TableCard = ({
                 >
                   {row.map((cell, index) => (
                     <TableCell key={index}>
-                      {link && <Link to={link}>{cell}</Link>}
+                      {link ? <Link to={link}>{cell}</Link> : cell}
                     </TableCell>
                   ))}
                 </TableRow>

@@ -1,0 +1,33 @@
+.LoginPage{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: var(--color-background-dark);
+}
+
+.LoginPage .FormSection{
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    gap: 1.5rem;
+}
+
+.LoginPage .MuiButton-root {
+        padding: 0.7rem 1rem;
+}
+
+.LoginPage h1{
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.LoginPage a{
+    text-decoration: none;
+    color: #fff;
+}
+
+.LoginPage a .MuiButton-root{
+    width:100%;
+}

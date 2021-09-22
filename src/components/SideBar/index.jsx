@@ -26,7 +26,7 @@ const SideBar = () => {
         <div>
           <div className="UserRoleSection">Administrator</div>
           <div className="NavItems">
-            <NavLink to={{ pathname: `/` }} exact={true}>
+            <NavLink to={{ pathname: `/dashboard` }} exact={true}>
               Dashboard
             </NavLink>
             <NavLink to={{ pathname: `/patients` }}>Patients</NavLink>

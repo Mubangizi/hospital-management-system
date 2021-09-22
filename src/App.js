@@ -4,6 +4,7 @@ import ProfilePage from "./pages/ProfilePage";
 import DashboardPage from "./pages/DashboardPage";
 import DoctorsPage from "./pages/DoctorsPage";
 import LoginPage from "./pages/AuthPages/LoginPage";
+import NotFoundPage from "./pages/NotFoundPage.jsx";
 const App = () => {
   return (
     <BrowserRouter>
@@ -12,6 +13,7 @@ const App = () => {
         <Route exact path="/doctors" component={DoctorsPage} />
         <Route exact path="/" component={LoginPage} />
         <Route exact path="/profile_info" component={ProfilePage} />
+        <Route exact path="" component={NotFoundPage} />
       </Switch>
     </BrowserRouter>
   );

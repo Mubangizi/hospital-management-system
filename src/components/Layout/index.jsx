@@ -19,3 +19,17 @@ const Layout = ({ children }) => {
 };
 
 export default Layout;
+
+export const SubLayout = ({ children }) => {
+  return (
+    <div className="Layout">
+      <Header />
+      <div>
+        <SideBar />
+        <main>
+          <Container>{children}</Container>
+        </main>
+      </div>
+    </div>
+  );
+};

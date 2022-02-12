@@ -1,10 +1,10 @@
 import React from "react";
 import SubHeader from "../../components/Header/SubHeader";
-import Layout from "../../components/Layout";
+import { SubLayout } from "../../components/Layout";
 import ProfileInfo from "../../components/ProfileInfo";
 const ProfilePage = () => {
   return (
-    <Layout>
+    <SubLayout>
       <div className="Container">
         <div className="HomeMainContent">
           <SubHeader
@@ -15,7 +15,7 @@ const ProfilePage = () => {
           <ProfileInfo />
         </div>
       </div>
-    </Layout>
+    </SubLayout>
   );
 };
 

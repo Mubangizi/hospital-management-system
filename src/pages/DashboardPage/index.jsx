@@ -3,7 +3,7 @@ import { departments_summary } from "../../assets/data";
 import SmallInfoCard from "../../components/Cards/SmallInfoCard";
 import TableCard from "../../components/Cards/TableCard";
 import SubHeader from "../../components/Header/SubHeader";
-import Layout from "../../components/Layout";
+import { SubLayout } from "../../components/Layout";
 import "./Dashboard.css";
 const DashboardPage = () => {
   const headingList = [
@@ -13,7 +13,7 @@ const DashboardPage = () => {
     "Number of nurses",
   ];
   return (
-    <Layout>
+    <SubLayout>
       <div className="Container">
         <div className="HomeMainContent">
           <SubHeader />
@@ -31,7 +31,7 @@ const DashboardPage = () => {
           />
         </div>
       </div>
-    </Layout>
+    </SubLayout>
   );
 };
 

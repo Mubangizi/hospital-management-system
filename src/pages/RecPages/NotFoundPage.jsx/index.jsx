@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { SubLayout } from "../../components/Layout";
+import { SubLayout } from "../../../components/Layout";
 import "./NotFoundPage.css";
 const NotFoundPage = () => {
   return (

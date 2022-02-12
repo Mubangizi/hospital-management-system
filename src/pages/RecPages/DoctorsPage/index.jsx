@@ -1,9 +1,9 @@
 import React from "react";
-import { doctors_summary } from "../../assets/data";
-import SmallInfoCard from "../../components/Cards/SmallInfoCard";
-import TableCard from "../../components/Cards/TableCard";
-import SubHeader from "../../components/Header/SubHeader";
-import { SubLayout } from "../../components/Layout";
+import { doctors_summary } from "../../../assets/data";
+import SmallInfoCard from "../../../components/Cards/SmallInfoCard";
+import TableCard from "../../../components/Cards/TableCard";
+import SubHeader from "../../../components/Header/SubHeader";
+import { SubLayout } from "../../../components/Layout";
 const DoctorsPage = () => {
   const headingList = ["Name", "Specialisation", "Department", "On Duty"];
   return (

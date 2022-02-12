@@ -1,7 +1,7 @@
 import React from "react";
-import SubHeader from "../../components/Header/SubHeader";
-import { SubLayout } from "../../components/Layout";
-import ProfileInfo from "../../components/ProfileInfo";
+import SubHeader from "../../../components/Header/SubHeader";
+import { SubLayout } from "../../../components/Layout";
+import ProfileInfo from "../../../components/ProfileInfo";
 const ProfilePage = () => {
   return (
     <SubLayout>

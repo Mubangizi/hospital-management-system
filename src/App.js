@@ -1,10 +1,10 @@
 import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import ProfilePage from "./pages/ProfilePage";
-import DashboardPage from "./pages/DashboardPage";
-import DoctorsPage from "./pages/DoctorsPage";
-import LoginPage from "./pages/AuthPages/LoginPage";
-import NotFoundPage from "./pages/NotFoundPage.jsx";
+import ProfilePage from "./pages/RecPages/ProfilePage";
+import DashboardPage from "./pages/RecPages/DashboardPage";
+import DoctorsPage from "./pages/RecPages/DoctorsPage";
+import LoginPage from "./pages/RecPages/AuthPages/LoginPage";
+import NotFoundPage from "./pages/RecPages/NotFoundPage.jsx/index.jsx";
 const App = () => {
   return (
     <BrowserRouter>

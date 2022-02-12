@@ -1,9 +1,9 @@
 import React from "react";
-import { departments_summary } from "../../assets/data";
-import SmallInfoCard from "../../components/Cards/SmallInfoCard";
-import TableCard from "../../components/Cards/TableCard";
-import SubHeader from "../../components/Header/SubHeader";
-import { SubLayout } from "../../components/Layout";
+import { departments_summary } from "../../../assets/data";
+import SmallInfoCard from "../../../components/Cards/SmallInfoCard";
+import TableCard from "../../../components/Cards/TableCard";
+import SubHeader from "../../../components/Header/SubHeader";
+import { SubLayout } from "../../../components/Layout";
 import "./Dashboard.css";
 const DashboardPage = () => {
   const headingList = [

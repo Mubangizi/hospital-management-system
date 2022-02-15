@@ -13,6 +13,23 @@
     color: white;
 }
 
+.HeaderMenus{
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.HeaderMenus a{
+    text-decoration: none;
+    color: white;
+}
+
+.HeaderMenus .active{
+    font-weight: bold;
+    border-bottom: 1px solid white;
+}
+
+
 .SubHeader{
     display: flex;
     justify-content: space-between;

@@ -1,10 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { SubLayout } from "../../../components/Layout";
+import Header from "../../../components/Header";
 import "./NotFoundPage.css";
 const NotFoundPage = () => {
   return (
-    <SubLayout>
+    <div>
+      <Header />
       <div className="Container">
         <div className="HomeMainContent">
           <div className="NotFoundInfo">
@@ -15,7 +16,7 @@ const NotFoundPage = () => {
           </div>
         </div>
       </div>
-    </SubLayout>
+    </div>
   );
 };
 

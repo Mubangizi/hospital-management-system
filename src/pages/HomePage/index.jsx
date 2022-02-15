@@ -1,31 +1,38 @@
 import { Container } from "@material-ui/core";
 import React from "react";
-import { useState } from "react";
 import Header from "../../components/Header";
 import { API } from "../../utils";
 import DefaultBarGraph from "../../components/Graphs";
+import { useEffect } from "react";
 import DiseaseGraph, {
   HospitalGraph,
 } from "../../components/Graphs/DiseaseGraph";
-import { useEffect } from "react";
 import "./HomePage.css";
+import { actionTypes } from "../../reducer";
+import { useStateValue } from "../../StateProvider";
 
 const HomePage = () => {
-  const [hospitals, setHospitals] = useState([]);
-  const [diseases, setDiseases] = useState([]);
+  const [{ hospitals, diseases }, dispatch] = useStateValue();
   const getHospitals = async () => {
     await API.get(`/hospitals`)
       .then((res) => {
-        setHospitals(res.data?.data?.hospitals);
+        dispatch({
+          type: actionTypes.SET_HOSPITALS,
+          hospitals: res.data.data.hospitals,
+        });
       })
       .catch((Err) => {
         console.log(`An error occured: ${Err}`);
       });
   };
+
   const getDiseases = async () => {
     await API.get(`/diseases`)
       .then((res) => {
-        setDiseases(res.data?.data?.diseases);
+        dispatch({
+          type: actionTypes.SET_DISEASES,
+          diseases: res.data.data.diseases,
+        });
       })
       .catch((Err) => {
         console.log(`An error occured: ${Err}`);
@@ -34,6 +41,7 @@ const HomePage = () => {
   useEffect(() => {
     getDiseases();
     getHospitals();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

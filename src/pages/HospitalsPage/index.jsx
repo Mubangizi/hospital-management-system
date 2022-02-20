@@ -12,24 +12,19 @@ import Header from "../../components/Header";
 import "./HospitalsPage.css";
 import { useStateValue } from "../../StateProvider";
 import { HospitalGraph } from "../../components/Graphs/DiseaseGraph";
-function createData(name, calories, fat, carbs, protein) {
-  return { name, calories, fat, carbs, protein };
-}
+import { useHistory } from "react-router-dom";
 
 const HospitalPage = () => {
-  const rows = [
-    createData("Frozen yoghurt", 159, 6.0, 24, 4.0),
-    createData("Ice cream sandwich", 237, 9.0, 37, 4.3),
-    createData("Eclair", 262, 16.0, 24, 6.0),
-    createData("Cupcake", 305, 3.7, 67, 4.3),
-    createData("Gingerbread", 356, 16.0, 49, 3.9),
-  ];
-  const [{ hospitals }, dispatch] = useStateValue();
-  console.log(hospitals);
+  const history = useHistory();
+  const [{ hospitals }] = useStateValue();
+
+  const gotToHosipital = (id) => {
+    history.push(`/hospitals/${id}`);
+  };
 
   return (
     <div className="Layout">
-      <Header />
+      <Header title="Hospitals" />
       <Container>
         <div className="HomeLayout ">
           <div>
@@ -51,7 +46,11 @@ const HospitalPage = () => {
                   {hospitals.map((hospital) => (
                     <TableRow
                       key={hospital.name}
-                      sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                      sx={{
+                        "&:last-child td, &:last-child th": { border: 0 },
+                      }}
+                      className="HospiTableRow"
+                      onClick={() => gotToHosipital(hospital.id)}
                     >
                       <TableCell component="th" scope="row">
                         {hospital.name}

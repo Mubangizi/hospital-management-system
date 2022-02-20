@@ -11,3 +11,11 @@
     background-color: #fff;
     padding: 1rem;
 }
+
+.HospiTableRow {
+    cursor: pointer;
+}
+
+.HospiTableRow:hover{
+    background-color: #ececec;
+}

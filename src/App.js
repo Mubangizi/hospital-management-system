@@ -7,12 +7,14 @@ import LoginPage from "./pages/RecPages/AuthPages/LoginPage";
 import NotFoundPage from "./pages/RecPages/NotFoundPage.jsx/index.jsx";
 import HomePage from "./pages/HomePage";
 import HospitalsPage from "./pages/HospitalsPage";
+import SingleHospitalPage from "./pages/HospitalsPage/SingleHospitalPage";
 const App = () => {
   return (
     <BrowserRouter>
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route exact path="/hospitals" component={HospitalsPage} />
+        <Route exact path="/hospitals/:id" component={SingleHospitalPage} />
         {/* Records management routes */}
         <Route exact path="/dashboard" component={DashboardPage} />
         <Route exact path="/doctors" component={DoctorsPage} />

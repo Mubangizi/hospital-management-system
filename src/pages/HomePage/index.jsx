@@ -1,39 +1,22 @@
 import { Container } from "@material-ui/core";
 import React from "react";
-import { useState } from "react";
 import Header from "../../components/Header";
-import { API } from "../../utils";
+import { getDiseases, getHospitals } from "../../utils";
 import DefaultBarGraph from "../../components/Graphs";
+import { useEffect } from "react";
 import DiseaseGraph, {
   HospitalGraph,
 } from "../../components/Graphs/DiseaseGraph";
-import { useEffect } from "react";
 import "./HomePage.css";
+import { useStateValue } from "../../StateProvider";
 
 const HomePage = () => {
-  const [hospitals, setHospitals] = useState([]);
-  const [diseases, setDiseases] = useState([]);
-  const getHospitals = async () => {
-    await API.get(`/hospitals`)
-      .then((res) => {
-        setHospitals(res.data?.data?.hospitals);
-      })
-      .catch((Err) => {
-        console.log(`An error occured: ${Err}`);
-      });
-  };
-  const getDiseases = async () => {
-    await API.get(`/diseases`)
-      .then((res) => {
-        setDiseases(res.data?.data?.diseases);
-      })
-      .catch((Err) => {
-        console.log(`An error occured: ${Err}`);
-      });
-  };
+  const [{ hospitals, diseases }, dispatch] = useStateValue();
+
   useEffect(() => {
-    getDiseases();
-    getHospitals();
+    getDiseases(dispatch);
+    getHospitals(dispatch);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

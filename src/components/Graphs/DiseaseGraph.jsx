@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Line } from "react-chartjs-2";
+import { Bar, Line } from "react-chartjs-2";
 import { API } from "../../utils";
 import dateFormat from "dateformat";
 // eslint-disable-next-line no-unused-vars
@@ -13,26 +13,40 @@ const options = {
   },
 };
 
-const DiseaseGraph = ({ disease }) => {
+const DiseaseGraph = ({ disease, hospital_id, bar = false }) => {
   const [patients, setPatients] = useState([]);
   const patientsLabels = patients.map((patient) =>
     dateFormat(patient?.date_created, "mmm dd, yyyy")
   );
   const patientsNo = patients.map((patient) => patient?.no_of_patients);
   const getPatients = async () => {
-    await API.get(`/diseases/${disease.id}/patients`)
-      .then((res) => {
-        setPatients(res.data?.patients);
+    if (hospital_id) {
+      await API.post(`/patients/filter`, {
+        hospital_id: hospital_id,
+        disease_id: disease.id,
       })
-      .catch((Err) => {
-        console.log(`An error occured: ${Err}`);
-      });
+        .then((res) => {
+          setPatients(res.data?.patients);
+        })
+        .catch((Err) => {
+          console.log(`An error occured: ${Err}`);
+        });
+    } else {
+      await API.get(`/diseases/${disease.id}/patients`)
+        .then((res) => {
+          setPatients(res.data?.patients);
+        })
+        .catch((Err) => {
+          console.log(`An error occured: ${Err}`);
+        });
+    }
   };
 
   useEffect(() => {
     getPatients();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
   const chartData = {
     labels: patientsLabels,
     datasets: [
@@ -40,14 +54,20 @@ const DiseaseGraph = ({ disease }) => {
         label: `${disease.name} Infections Number`,
         data: patientsNo,
         fill: true,
-        backgroundColor: "rgba(75,192,192,0.2)",
+        backgroundColor: `${
+          bar ? "rgba(75, 192, 192, 1)" : "rgba(75, 192, 192, 0.2)"
+        }`,
         borderColor: "rgba(75,192,192,1)",
       },
     ],
   };
   return (
     <div>
-      <Line data={chartData} options={options} />
+      {bar ? (
+        <Bar data={chartData} options={options} />
+      ) : (
+        <Line data={chartData} options={options} />
+      )}
     </div>
   );
 };

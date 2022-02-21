@@ -1,6 +1,9 @@
-.Header{
+.HeaderWrapper{
     background-color: var(--color-blue);
     padding: 0.8rem 2rem;
+}
+
+.Header{
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -12,6 +15,7 @@
     text-decoration: none;
     color: white;
 }
+
 
 .HeaderMenus{
     display: flex;

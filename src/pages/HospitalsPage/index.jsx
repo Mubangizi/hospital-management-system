@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Container,
   Table,
@@ -13,14 +13,19 @@ import "./HospitalsPage.css";
 import { useStateValue } from "../../StateProvider";
 import { HospitalGraph } from "../../components/Graphs/DiseaseGraph";
 import { useHistory } from "react-router-dom";
+import { getHospitals } from "../../utils";
 
 const HospitalPage = () => {
   const history = useHistory();
-  const [{ hospitals }] = useStateValue();
+  const [{ hospitals }, dispatch] = useStateValue();
 
   const gotToHosipital = (id) => {
     history.push(`/hospitals/${id}`);
   };
+  useEffect(() => {
+    getHospitals(dispatch);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div className="Layout">
@@ -28,10 +33,10 @@ const HospitalPage = () => {
       <Container>
         <div className="HomeLayout ">
           <div>
-            <h2>Hospitals Section</h2>
+            <h1>Hospitals Section</h1>
             <p>
               Table showing available hospitals and total number on infections
-              for a period of one year
+              for all for a period of one year
             </p>
             <TableContainer className="WhiteBackground">
               <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -40,6 +45,7 @@ const HospitalPage = () => {
                     <TableCell>Name</TableCell>
                     <TableCell align="right">Alias&nbsp;</TableCell>
                     <TableCell align="right">District</TableCell>
+                    <TableCell align="right">Total infections</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
@@ -57,6 +63,9 @@ const HospitalPage = () => {
                       </TableCell>
                       <TableCell align="right">{hospital.alias}</TableCell>
                       <TableCell align="right">{hospital.district}</TableCell>
+                      <TableCell align="right">
+                        {hospital.total_of_patients}
+                      </TableCell>
                     </TableRow>
                   ))}
                 </TableBody>
@@ -66,8 +75,8 @@ const HospitalPage = () => {
           <div>
             <h2>Hospitals Graph summary</h2>
             <p>
-              Graphs showing summary of hospital infections over a period of one
-              year
+              Graphs showing summary of hospital infections for all diseases
+              over a period of one year
             </p>
             <div className="DiseaseGraphsSection CardSection">
               {hospitals.map((hospital) => (

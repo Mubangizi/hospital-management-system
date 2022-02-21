@@ -19,3 +19,7 @@
 .HospiTableRow:hover{
     background-color: #ececec;
 }
+
+.SmallTable .MuiTable-root{
+    width: fit-content;
+}

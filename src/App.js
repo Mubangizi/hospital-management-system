@@ -8,6 +8,8 @@ import NotFoundPage from "./pages/RecPages/NotFoundPage.jsx/index.jsx";
 import HomePage from "./pages/HomePage";
 import HospitalsPage from "./pages/HospitalsPage";
 import SingleHospitalPage from "./pages/HospitalsPage/SingleHospitalPage";
+import DiseasePage from "./pages/DiseasePages";
+import SingleDiseasePage from "./pages/DiseasePages/SingleDiseasePage";
 const App = () => {
   return (
     <BrowserRouter>
@@ -15,6 +17,8 @@ const App = () => {
         <Route exact path="/" component={HomePage} />
         <Route exact path="/hospitals" component={HospitalsPage} />
         <Route exact path="/hospitals/:id" component={SingleHospitalPage} />
+        <Route exact path="/diseases" component={DiseasePage} />
+        <Route exact path="/disease/:id" component={SingleDiseasePage} />
         {/* Records management routes */}
         <Route exact path="/dashboard" component={DashboardPage} />
         <Route exact path="/doctors" component={DoctorsPage} />

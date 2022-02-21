@@ -5,7 +5,7 @@ import { API } from "../../utils";
 // eslint-disable-next-line no-unused-vars
 import Chart from "chart.js/auto";
 
-const DefaultBarGraph = ({ hospitalId = false }) => {
+const DefaultBarGraph = ({ hospitalId = false, diseaseId = false }) => {
   const [patients, setPatients] = useState([]);
   const patientsLabels = patients.map((patient) =>
     dateFormat(patient?.date_created, "mmm dd, yyyy")
@@ -31,10 +31,21 @@ const DefaultBarGraph = ({ hospitalId = false }) => {
       });
   };
 
+  const getDiseasesPatients = async () => {
+    await API.get(`/diseases/${diseaseId}/patients`)
+      .then((res) => {
+        setPatients(res.data.patients);
+      })
+      .catch((Err) => {
+        console.log(`An error occured: ${Err}`);
+      });
+  };
+
   useEffect(() => {
     if (hospitalId) {
-      console.log("first");
       getHospitalsPatients();
+    } else if (diseaseId) {
+      getDiseasesPatients();
     } else {
       getPatients();
     }

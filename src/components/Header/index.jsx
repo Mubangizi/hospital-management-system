@@ -14,9 +14,7 @@ const Header = ({ showAvator, title }) => {
             {title}
           </div>
           <div className="HeaderMenus">
-            <NavLink to={{ pathname: `/hospitals` }} exact={true}>
-              Hospitals
-            </NavLink>
+            <NavLink to={{ pathname: `/hospitals` }}>Hospitals</NavLink>
             <NavLink to={{ pathname: `/diseases` }}>Diseases</NavLink>
           </div>
           <div></div>

@@ -9,21 +9,21 @@ import {
 } from "@material-ui/core";
 import React from "react";
 import Header from "../../components/Header";
-import { API, getDiseases } from "../../utils";
+import { API, getHospitals } from "../../utils";
 import DefaultBarGraph from "../../components/Graphs";
 import { useEffect } from "react";
-import DiseaseGraph from "../../components/Graphs/DiseaseGraph";
+import { HospitalGraph } from "../../components/Graphs/DiseaseGraph";
 import { useStateValue } from "../../StateProvider";
 
-const SingleHospitalPage = (props) => {
-  const [hospital, setHospital] = React.useState({});
-  const hospitalId = props.location.pathname.split("/")[2];
-  const [{ diseases }, dispatch] = useStateValue();
+const SingleDiseasePage = (props) => {
+  const [disease, setDisease] = React.useState({});
+  const diseaseId = props.location.pathname.split("/")[2];
+  const [{ hospitals }, dispatch] = useStateValue();
 
-  const getHospital = async () => {
-    await API.get(`/hospitals/${hospitalId}`)
+  const getDisease = async () => {
+    await API.get(`/diseases/${diseaseId}`)
       .then((res) => {
-        setHospital(res.data.hospital);
+        setDisease(res.data.data.disease);
       })
       .catch((Err) => {
         console.log(`An error occured: ${Err}`);
@@ -31,30 +31,35 @@ const SingleHospitalPage = (props) => {
   };
 
   useEffect(() => {
-    getHospital();
-    if (diseases.length === 0) {
-      getDiseases(dispatch);
+    getDisease();
+    if (hospitals.length === 0) {
+      getHospitals(dispatch);
     }
     // getInfections();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
   return (
     <div className="Layout">
-      <Header title={hospital?.alias} />
+      <Header title={disease?.name} />
       <Container>
         <div className="HomeLayout">
           <div>
-            <h1>{hospital?.name}</h1>
-            <div>
-              Location: <span>{hospital?.district}</span>
-            </div>
-            <DefaultBarGraph hospitalId={hospitalId} />
+            <h1>{disease?.name}</h1>
+            <p>{disease?.description}</p>
           </div>
           <div>
-            <h2>Overall Infections per disease in {hospital?.name}</h2>
+            <h2>Overall Infections of {disease?.name}</h2>
             <p>
-              The table below shows the total number of infections per disease
+              A graph showing all registered infections of {disease?.name} for
+              the period of one year
+            </p>
+            <DefaultBarGraph diseaseId={diseaseId} />
+          </div>
+          <div>
+            <h2>Overall Infections of {disease?.name} in hospitals</h2>
+            <p>
+              A table showing overall infections of {disease?.name} for the
+              period of one year
             </p>
             <TableContainer className="SmallTable">
               <Table
@@ -65,24 +70,26 @@ const SingleHospitalPage = (props) => {
                 <TableHead>
                   <TableRow>
                     <TableCell>Name</TableCell>
-                    <TableCell align="left">No of infections&nbsp;</TableCell>
+                    <TableCell align="right">Alias</TableCell>
+                    <TableCell align="right">No of infections&nbsp;</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {Object.keys(hospital).length !== 0 &&
-                    hospital?.diseases.map((disease) => (
+                  {Object.keys(disease).length !== 0 &&
+                    disease?.diseases.map((disease) => (
                       <TableRow
                         key={disease.name}
                         sx={{
                           "&:last-child td, &:last-child th": { border: 0 },
                         }}
                         className="HospiTableRow"
-                        // onClick={() => gotToHosipital(hospital.id)}
+                        // onClick={() => gotToHosipital(disease.id)}
                       >
                         <TableCell component="th" scope="row">
                           {disease.name}
                         </TableCell>
-                        <TableCell align="left">
+                        <TableCell align="right">{disease.alias}</TableCell>
+                        <TableCell align="right">
                           {disease.no_of_infections}
                         </TableCell>
                       </TableRow>
@@ -92,14 +99,18 @@ const SingleHospitalPage = (props) => {
             </TableContainer>
           </div>
           <div>
-            <h2>Overall Infections per disease</h2>
+            <h2>Overall Infections per hospital</h2>
             <p>
-              These are graphs showing the number of infections per disease for
-              the period of one year
+              These are graphs showing the number of {disease?.name} infections
+              per hospital for the period of one year
             </p>
             <div className="DiseaseGraphsSection">
-              {diseases.map((disease) => (
-                <DiseaseGraph disease={disease} hospital_id={hospital.id} bar />
+              {hospitals.map((hospital) => (
+                <HospitalGraph
+                  hospital={hospital}
+                  disease_id={disease.id}
+                  bar
+                />
               ))}
             </div>
           </div>
@@ -109,4 +120,4 @@ const SingleHospitalPage = (props) => {
   );
 };
 
-export default SingleHospitalPage;
+export default SingleDiseasePage;

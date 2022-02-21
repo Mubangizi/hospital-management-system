@@ -74,20 +74,33 @@ const DiseaseGraph = ({ disease, hospital_id, bar = false }) => {
 
 export default DiseaseGraph;
 
-export const HospitalGraph = ({ hospital }) => {
+export const HospitalGraph = ({ hospital, disease_id, bar = false }) => {
   const [patients, setPatients] = useState([]);
   const patientsLabels = patients.map((patient) =>
     dateFormat(patient?.date_created, "mmm dd, yyyy")
   );
   const patientsNo = patients.map((patient) => patient?.no_of_patients);
   const getPatients = async () => {
-    await API.get(`/hospitals/${hospital.id}/patients`)
-      .then((res) => {
-        setPatients(res.data?.patients);
+    if (disease_id) {
+      await API.post(`/patients/filter`, {
+        hospital_id: hospital.id,
+        disease_id: disease_id,
       })
-      .catch((Err) => {
-        console.log(`An error occured: ${Err}`);
-      });
+        .then((res) => {
+          setPatients(res.data?.patients);
+        })
+        .catch((Err) => {
+          console.log(`An error occured: ${Err}`);
+        });
+    } else {
+      await API.get(`/hospitals/${hospital.id}/patients`)
+        .then((res) => {
+          setPatients(res.data?.patients);
+        })
+        .catch((Err) => {
+          console.log(`An error occured: ${Err}`);
+        });
+    }
   };
 
   useEffect(() => {
@@ -102,14 +115,21 @@ export const HospitalGraph = ({ hospital }) => {
         label: `${hospital.name} Infections Number`,
         data: patientsNo,
         fill: true,
-        backgroundColor: "rgba(54, 162, 235, 0.2)",
+        backgroundColor: bar
+          ? "rgba(54, 162, 235, 1)"
+          : "rgba(54, 162, 235, 0.2)",
+
         borderColor: "rgba(54, 162, 235, 1)",
       },
     ],
   };
   return (
     <div>
-      <Line data={chartData} options={options} />
+      {bar ? (
+        <Bar data={chartData} options={options} />
+      ) : (
+        <Line data={chartData} options={options} />
+      )}
     </div>
   );
 };

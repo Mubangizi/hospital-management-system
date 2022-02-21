@@ -5,7 +5,7 @@ import { API } from "../../utils";
 // eslint-disable-next-line no-unused-vars
 import Chart from "chart.js/auto";
 
-const DefaultBarGraph = () => {
+const DefaultBarGraph = ({ hospitalId = false, diseaseId = false }) => {
   const [patients, setPatients] = useState([]);
   const patientsLabels = patients.map((patient) =>
     dateFormat(patient?.date_created, "mmm dd, yyyy")
@@ -21,8 +21,35 @@ const DefaultBarGraph = () => {
       });
   };
 
+  const getHospitalsPatients = async () => {
+    await API.get(`/hospitals/${hospitalId}/patients`)
+      .then((res) => {
+        setPatients(res.data.patients);
+      })
+      .catch((Err) => {
+        console.log(`An error occured: ${Err}`);
+      });
+  };
+
+  const getDiseasesPatients = async () => {
+    await API.get(`/diseases/${diseaseId}/patients`)
+      .then((res) => {
+        setPatients(res.data.patients);
+      })
+      .catch((Err) => {
+        console.log(`An error occured: ${Err}`);
+      });
+  };
+
   useEffect(() => {
-    getPatients();
+    if (hospitalId) {
+      getHospitalsPatients();
+    } else if (diseaseId) {
+      getDiseasesPatients();
+    } else {
+      getPatients();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const chartData = {
     labels: patientsLabels,

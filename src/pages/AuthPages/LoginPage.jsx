@@ -9,6 +9,7 @@ const LoginPage = () => {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [error, setError] = React.useState("");
+  // eslint-disable-next-line no-unused-vars
   const [state, dispatch] = useStateValue();
 
   const loginUser = async () => {

@@ -1,5 +1,6 @@
 import { Container } from "@material-ui/core";
 import React from "react";
+import Footer from "../Footer";
 import Header from "../Header";
 import SideBar, { SubSideBar } from "../SideBar";
 import "./Layout.css";
@@ -19,6 +20,18 @@ const Layout = ({ children }) => {
 };
 
 export default Layout;
+
+export const SimpleLayout = ({ children, title }) => {
+  return (
+    <div className="Layout SimpleLayout">
+      <div>
+        <Header title={title} />
+        <Container>{children}</Container>
+      </div>
+      <Footer />
+    </div>
+  );
+};
 
 export const SubLayout = ({ children }) => {
   return (

@@ -1,8 +1,6 @@
 import React from "react";
 import { useEffect } from "react";
-import { departments_summary } from "../../assets/data";
 import SmallInfoCard from "../../components/Cards/SmallInfoCard";
-import TableCard from "../../components/Cards/TableCard";
 import DefaultBarGraph from "../../components/Graphs";
 import SubHeader from "../../components/Header/SubHeader";
 import Layout from "../../components/Layout";
@@ -21,17 +19,10 @@ const DashboardPage = () => {
         console.log(`An error occured: ${Err}`);
       });
   };
-  console.log(hospital);
   useEffect(() => {
     getHospital();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  const headingList = [
-    "Name",
-    "Number of Patients",
-    "Number of Doctors",
-    "Number of nurses",
-  ];
   return (
     <Layout>
       <div className="Container">

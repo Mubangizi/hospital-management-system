@@ -51,3 +51,7 @@
     text-decoration: none;
     color: inherit;
 }
+
+.TableCard tr td:last-child, .TableCard tr th:last-child{
+    text-align:right;
+}

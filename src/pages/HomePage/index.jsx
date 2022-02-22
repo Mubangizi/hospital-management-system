@@ -9,6 +9,7 @@ import DiseaseGraph, {
 } from "../../components/Graphs/DiseaseGraph";
 import "./HomePage.css";
 import { useStateValue } from "../../StateProvider";
+import Footer from "../../components/Footer";
 
 const HomePage = () => {
   const [{ hospitals, diseases }, dispatch] = useStateValue();
@@ -40,6 +41,7 @@ const HomePage = () => {
           </div>
         </div>
       </Container>
+      <Footer />
     </div>
   );
 };

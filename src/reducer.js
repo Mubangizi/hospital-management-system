@@ -1,11 +1,13 @@
 export const initialState = {
   hospitals: [],
   diseases: [],
+  user: {},
 };
 
 export const actionTypes = {
   SET_HOSPITALS: "SET_HOSPITALS",
   SET_DISEASES: "SET_DISEASES",
+  LOGIN_USER: "LOGIN_USER",
 };
 
 const reducer = (state, action) => {
@@ -19,6 +21,11 @@ const reducer = (state, action) => {
       return {
         ...state,
         diseases: action.diseases,
+      };
+    case actionTypes.LOGIN_USER:
+      return {
+        ...state,
+        user: action.user,
       };
     default:
       return state;

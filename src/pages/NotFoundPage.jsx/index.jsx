@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Header from "../../../components/Header";
+import Header from "../../components/Header";
 import "./NotFoundPage.css";
 const NotFoundPage = () => {
   return (
@@ -12,7 +12,7 @@ const NotFoundPage = () => {
             <h1>404</h1>
             <div>Opps !</div>
             <div>The page your looking for doesnt seem to be available</div>
-            <Link to="/dashboard">Click to go back to home</Link>
+            <Link to="/">Click to go back to home</Link>
           </div>
         </div>
       </div>

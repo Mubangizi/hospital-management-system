@@ -16,6 +16,62 @@ const SideBar = () => {
       setOpen(true);
     }
   };
+  const logout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("username");
+    window.location.href = "/login";
+  };
+
+  // const sendToHome = () => {
+  //   history.push("/");
+  // };
+  return (
+    <div className="SideBar">
+      <div className={`SideBarContent Side-${open}`}>
+        <div>
+          <div className="UserRoleSection">Administrator</div>
+          <div className="NavItems">
+            <NavLink to={{ pathname: `/dashboard` }} exact={true}>
+              Dashboard
+            </NavLink>
+            <NavLink to={{ pathname: `/patients` }}>Patients</NavLink>
+            <NavLink to={{ pathname: `/settings` }}>Settings</NavLink>
+            <div onClick={logout} className="LogoutBtn">
+              Logout
+            </div>
+          </div>
+        </div>
+        <div className="RemarksSection">
+          <p>© 2021 HMS</p>
+        </div>
+      </div>
+      <div className="SideControllerBtn">
+        <IconButton
+          color="inherit"
+          aria-label="open drawer"
+          onClick={handleDrawer}
+          edge="start"
+        >
+          {!open ? <MenuOutlinedIcon /> : <CloseOutlinedIcon />}
+        </IconButton>
+      </div>
+    </div>
+  );
+};
+
+export default SideBar;
+
+export const SubSideBar = () => {
+  const [open, setOpen] = React.useState(false);
+  // const history = useHistory();
+
+  const handleDrawer = () => {
+    if (open === true) {
+      setOpen(false);
+    } else {
+      setOpen(true);
+    }
+  };
 
   // const sendToHome = () => {
   //   history.push("/");
@@ -56,5 +112,3 @@ const SideBar = () => {
     </div>
   );
 };
-
-export default SideBar;

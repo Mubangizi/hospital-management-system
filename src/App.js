@@ -4,7 +4,7 @@ import ProfilePage from "./pages/RecPages/ProfilePage";
 import DashboardPage from "./pages/DashboardPage";
 import DoctorsPage from "./pages/RecPages/DoctorsPage";
 import LoginPage from "./pages/AuthPages/LoginPage";
-import NotFoundPage from "./pages/RecPages/NotFoundPage.jsx/index.jsx";
+import NotFoundPage from "./pages/NotFoundPage.jsx/index.jsx";
 import HomePage from "./pages/HomePage";
 import HospitalsPage from "./pages/HospitalsPage";
 import SingleHospitalPage from "./pages/HospitalsPage/SingleHospitalPage";

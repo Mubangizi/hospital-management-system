@@ -16,6 +16,11 @@ const SideBar = () => {
       setOpen(true);
     }
   };
+  const logout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("username");
+    window.location.href = "/login";
+  };
 
   // const sendToHome = () => {
   //   history.push("/");
@@ -31,7 +36,9 @@ const SideBar = () => {
             </NavLink>
             <NavLink to={{ pathname: `/patients` }}>Patients</NavLink>
             <NavLink to={{ pathname: `/settings` }}>Settings</NavLink>
-            <NavLink to={{ pathname: `/login` }}>Logout</NavLink>
+            <div onClick={logout} className="LogoutBtn">
+              Logout
+            </div>
           </div>
         </div>
         <div className="RemarksSection">

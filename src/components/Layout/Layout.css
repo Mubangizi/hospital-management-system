@@ -54,6 +54,10 @@ main {
   margin-top: 10px;
 }
 
+.DashboardWrapper{
+  /* background: var(--color-background-dark) */
+}
+
 @media(max-width:488px){
   .SectionHeader::before {
     font-size: 55px;

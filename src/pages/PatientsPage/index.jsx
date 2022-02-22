@@ -28,7 +28,6 @@ const PatientsPage = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  console.log(diseases);
   const getDiseaseName = (diseaseId) => {
     if (diseases.length > 0) {
       const disease = diseases.find((disease) => disease.id === diseaseId);
@@ -38,11 +37,14 @@ const PatientsPage = () => {
     }
   };
   const headingList = ["Date", "Disease", "Number of Patients"];
-  const dataList = patients.map((patient) => [
-    dateFormat(patient?.date_created, "mmm dd, yyyy"),
-    getDiseaseName(patient.disease_id),
-    patient.no_of_patients,
-  ]);
+  const dataList = patients
+    .slice(0)
+    .reverse()
+    .map((patient) => [
+      dateFormat(patient?.date_created, "mmm dd, yyyy"),
+      getDiseaseName(patient.disease_id),
+      patient.no_of_patients,
+    ]);
   return (
     <Layout>
       <div className="Container">

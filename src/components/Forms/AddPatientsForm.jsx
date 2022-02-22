@@ -7,44 +7,70 @@ import {
   TextField,
 } from "@material-ui/core";
 import React from "react";
+import { useEffect } from "react";
+import { useStateValue } from "../../StateProvider";
+import { API, getDiseases } from "../../utils";
 import "./Forms.css";
 
 const AddPatientsForm = ({ handleClose }) => {
-  const [age, setAge] = React.useState("");
+  const hospitalId = localStorage.getItem("hospital_id", "");
+  const [error, setError] = React.useState("");
+  const [patientsData, setPatientsData] = React.useState({
+    hospital_id: hospitalId,
+  });
+  const [{ diseases }, dispatch] = useStateValue();
 
   const handleChange = (event) => {
-    setAge(event.target.value);
+    event.preventDefault();
+    setPatientsData({
+      ...patientsData,
+      [event.target.name]: event.target.value,
+    });
   };
-  const departments = [
-    "Admissions",
-    "Cardiology",
-    "Anesthetics",
-    "Burn Center",
-    "Critical Care",
-    "General Surgery    ",
-  ];
+
+  const postPatientsData = async () => {
+    await API.post(`/patients`, patientsData)
+      .then((res) => {
+        handleClose();
+      })
+      .catch((Err) => {
+        console.log(`An error occured: ${Err}`);
+        setError("Opps something is not right, Try again");
+      });
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    postPatientsData();
+  };
+  useEffect(() => {
+    getDiseases(dispatch);
+  }, []);
+
   return (
     <div className="AddDoctorForm Card">
-      <form action="" className="FormSection">
+      <form action="" className="FormSection" onSubmit={handleSubmit}>
         <div className="FormHeading">Add Todays Infections</div>
 
         <FormControl sx={{ m: 1, width: 300 }}>
           <InputLabel id="demo-simple-select-autowidth-label">
-            Department
+            Disease
           </InputLabel>
           <Select
             labelId="demo-simple-select-autowidth-label"
             id="demo-simple-select-autowidth"
-            label="Department"
-            value={age}
+            label="Disease"
+            name="disease_id"
             onChange={handleChange}
             variant="outlined"
+            required
           >
-            {departments.map((name) => (
-              <MenuItem key={name} value={name}>
-                {name}
-              </MenuItem>
-            ))}
+            {diseases.length > 0 &&
+              diseases.map((disease) => (
+                <MenuItem key={disease.name} value={disease.id}>
+                  {disease.name}
+                </MenuItem>
+              ))}
           </Select>
         </FormControl>
         <TextField
@@ -52,13 +78,20 @@ const AddPatientsForm = ({ handleClose }) => {
           label="Number of infected patients"
           variant="outlined"
           type="number"
+          onChange={handleChange}
+          name="no_of_patients"
+          required
         />
+        {error && <div className="Error">{error}</div>}
 
         <div className="FormFooter">
           <Button className="CancelBtn" onClick={handleClose}>
             Cancel
           </Button>
-          <Button className="AddBtn">Add Data</Button>
+
+          <Button type="submit" className="AddBtn">
+            Add Patient Data
+          </Button>
         </div>
       </form>
     </div>

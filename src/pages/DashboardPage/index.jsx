@@ -1,6 +1,5 @@
 import React from "react";
 import { departments_summary } from "../../assets/data";
-import SmallInfoCard from "../../components/Cards/SmallInfoCard";
 import TableCard from "../../components/Cards/TableCard";
 import SubHeader from "../../components/Header/SubHeader";
 import Layout from "../../components/Layout";
@@ -17,7 +16,7 @@ const DashboardPage = () => {
       <div className="Container">
         <div className="HomeMainContent">
           <SubHeader title="Dashboard" addButton="Add Patients" />
-          
+
           <TableCard
             title="Departments"
             dataList={departments_summary}

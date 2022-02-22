@@ -9,12 +9,13 @@ const LoginPage = () => {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [error, setError] = React.useState("");
-  const [{}, dispatch] = useStateValue();
+  const [state, dispatch] = useStateValue();
 
   const loginUser = async () => {
     await API.post(`/users/login`, { email, password })
       .then((res) => {
-        localStorage.setItem("token", res.data.access_token);
+        localStorage.setItem("token", res.data.data.access_token);
+        localStorage.setItem("username", res.data.data.username);
         dispatch({
           type: actionTypes.LOGIN_USER,
           user: res.data.data,

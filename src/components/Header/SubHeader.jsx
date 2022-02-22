@@ -1,7 +1,6 @@
 import { Box, Button, IconButton, Modal } from "@material-ui/core";
 import { SearchOutlined } from "@material-ui/icons";
 import React from "react";
-import AddDoctorForm from "../Forms/AddDoctorForm";
 import AddPatientsForm from "../Forms/AddPatientsForm";
 
 const style = {

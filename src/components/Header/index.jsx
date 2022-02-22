@@ -2,7 +2,9 @@ import React from "react";
 import "./Header.css";
 import { Avatar, Container } from "@material-ui/core";
 import { Link, NavLink } from "react-router-dom";
+
 const Header = ({ showAvator, title, dashboard = false }) => {
+  const username = localStorage.getItem("username", "");
   return (
     <div className="HeaderWrapper">
       {dashboard ? (
@@ -15,6 +17,7 @@ const Header = ({ showAvator, title, dashboard = false }) => {
           </div>
           <div className="HeaderAccountInfo">
             <Avatar />
+            Hi, {username}
           </div>
         </div>
       ) : (

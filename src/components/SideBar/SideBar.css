@@ -71,20 +71,21 @@
   align-content: center;
   width: 14rem;
 }
-.NavItems a {
+.NavItems a, .NavItems .LogoutBtn {
   position: relative;
   text-decoration: none;
   color: white;
   padding: 0.6rem 2.2rem;
   outline: none;
   font-size: 15px;
+  cursor: pointer;
 }
 .active {
   background-color: var(--color-blue);
   color: white !important;
 }
 
-.NavItems a::before {
+.NavItems a::before, .NavItems .LogoutBtn::before {
   position: absolute;
   content: "";
   bottom: 0;
@@ -98,7 +99,7 @@
   transition: 0.5s ease;
 }
 
-.NavItems a:hover::before {
+.NavItems a:hover::before, .NavItems .LogoutBtn:hover::before {
   width: 100%;
 }
 

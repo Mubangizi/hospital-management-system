@@ -2,6 +2,12 @@
   width: 100%;
   height: 100vh;
 }
+.SimpleLayout{
+  min-width: 100vh!important;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 
 .SideBar {
   width: 20%;
@@ -9,6 +15,7 @@
 
 main {
   margin-left: 17%;
+  padding-bottom: 3rem;
 }
 @media (max-width: 1275px) {
   main {
@@ -52,6 +59,10 @@ main {
   background-color: var(--color-blue);
   width: 100px;
   margin-top: 10px;
+}
+
+.DashboardWrapper{
+  /* background: var(--color-background-dark) */
 }
 
 @media(max-width:488px){

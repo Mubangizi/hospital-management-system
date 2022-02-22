@@ -15,9 +15,10 @@ const LoginPage = () => {
   const loginUser = async () => {
     await API.post(`/users/login`, { email, password })
       .then((res) => {
+        console.log(res);
         localStorage.setItem("token", res.data.data.access_token);
         localStorage.setItem("username", res.data.data.username);
-        localStorage.setItem("hospital_id", 1);
+        localStorage.setItem("hospital_id", res.data.data.hospital_id);
         dispatch({
           type: actionTypes.LOGIN_USER,
           user: res.data.data,

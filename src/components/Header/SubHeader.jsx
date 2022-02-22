@@ -2,6 +2,7 @@ import { Box, Button, IconButton, Modal } from "@material-ui/core";
 import { SearchOutlined } from "@material-ui/icons";
 import React from "react";
 import AddDoctorForm from "../Forms/AddDoctorForm";
+import AddPatientsForm from "../Forms/AddPatientsForm";
 
 const style = {
   position: "absolute",
@@ -46,7 +47,7 @@ const SubHeader = ({
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <AddDoctorForm handleClose={handleClose} />
+          <AddPatientsForm handleClose={handleClose} />
         </Box>
       </Modal>
     </div>

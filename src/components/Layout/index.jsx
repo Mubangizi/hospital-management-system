@@ -1,13 +1,13 @@
 import { Container } from "@material-ui/core";
 import React from "react";
 import Header from "../Header";
-import SideBar from "../SideBar";
+import SideBar, { SubSideBar } from "../SideBar";
 import "./Layout.css";
 
 const Layout = ({ children }) => {
   return (
     <div className="Layout">
-      <Header />
+      <Header dashboard />
       <div>
         <SideBar />
         <main>
@@ -25,7 +25,7 @@ export const SubLayout = ({ children }) => {
     <div className="Layout">
       <Header />
       <div>
-        <SideBar />
+        <SubSideBar />
         <main>
           <Container>{children}</Container>
         </main>

@@ -11,6 +11,7 @@ import "./HomePage.css";
 import { useStateValue } from "../../StateProvider";
 import Footer from "../../components/Footer";
 import { Link } from "react-router-dom";
+import SmallInfoCard from "../../components/Cards/SmallInfoCard";
 
 const HomePage = () => {
   const [{ hospitals, diseases }, dispatch] = useStateValue();
@@ -43,6 +44,39 @@ const HomePage = () => {
                 has been collected for the period of one year.
               </p>
               <DefaultBarGraph />
+            </div>
+          </div>
+          <div>
+            <div>
+              <h1>Latest Infections</h1>
+              <p>
+                This section shows the latest number of infections in the
+                country.
+              </p>
+            </div>
+            <p>
+              <h2>Latest Infections by hospital</h2>
+            </p>
+            <div className="CardList">
+              {hospitals.map((hospital) => (
+                <SmallInfoCard
+                  key={hospital.id}
+                  name={hospital.name}
+                  value={hospital.latest}
+                />
+              ))}
+            </div>
+            <p>
+              <h2>Latest Infections by disease</h2>
+            </p>
+            <div className="CardList">
+              {diseases.map((hospital) => (
+                <SmallInfoCard
+                  key={hospital.id}
+                  name={hospital.name}
+                  value={hospital.latest}
+                />
+              ))}
             </div>
           </div>
 

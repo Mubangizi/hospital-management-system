@@ -11,7 +11,7 @@ const Header = ({ showAvator, title, dashboard = false }) => {
         <div className="Header">
           <div className="HeaderRight">
             <Link to="/" className="HeaderLogo">
-              HMS
+              PHRMS
             </Link>
             {title}
           </div>
@@ -25,7 +25,7 @@ const Header = ({ showAvator, title, dashboard = false }) => {
           <div className="Header">
             <div className="HeaderRight">
               <Link to="/" className="HeaderLogo">
-                HMS
+                PHRMS
               </Link>
               {title}
             </div>

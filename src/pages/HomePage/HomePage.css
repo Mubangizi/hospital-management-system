@@ -1,10 +1,18 @@
 .HomeLayout{
   display:flex;
   flex-direction:column;
-  gap: 2rem;
+  gap: 3rem;
   padding: 2rem 0;
 }
 
+.HomeLink{
+  text-decoration: none;
+  color: #000;
+}
+
+.HomeLink:hover{
+  text-decoration: underline;
+}
 
 .DiseaseGraphsSection{
     display: grid;

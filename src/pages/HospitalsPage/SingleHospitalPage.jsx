@@ -95,9 +95,11 @@ const SingleHospitalPage = (props) => {
             the period of one year
           </p>
           <div className="DiseaseGraphsSection">
-            {diseases.map((disease) => (
-              <DiseaseGraph disease={disease} hospital_id={hospital.id} bar />
-            ))}
+            {diseases.length > 0 &&
+              Object.keys(hospital).length !== 0 &&
+              diseases.map((disease) => (
+                <DiseaseGraph disease={disease} hospital_id={hospital.id} bar />
+              ))}
           </div>
         </div>
       </div>
